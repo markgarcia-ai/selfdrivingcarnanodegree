@@ -43,9 +43,9 @@ Single Shot MultiBox Detector (SSD) is a single-stage object detection model.
 <table>
   <tr>
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> Original Video</td>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" />fasterrcnn_resnet50_fpn</td>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> Original Video</td>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" />Using OpenCV</td>    
+    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" /> ResNet (Residual Networks)</td>
+    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> VGG (Visual Geometry Group) </td>
+    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" />DenseNet (Densely Connected Convolutional Networks)</td>    
   </tr>
 </table>
 
@@ -54,7 +54,9 @@ Single Shot MultiBox Detector (SSD) is a single-stage object detection model.
 
 You need to submit the following files or the Github Repository containing these files:
 
-**1_train_model.ipynb** - TODO 1 and TODO 2 should be complete. See the Project Instructions page for more details.
+**1_train_model.ipynb** - TODO 1 and TODO 2 should be complete. See the Project Instructions page for more details. 
+CREATED 
+
 **pipeline.config** files associated with all the different pretrained models that you have tried (at least 2)
 **2_deploy_model.ipynb** - TODO 3 should be complete.
 
@@ -81,6 +83,18 @@ In under
 1 - Deploy the best model and run inference.
   - Deploy the best model in AWS by completing and running 2_deploy_model.ipynb.
   - Should be able to generate an output video with vehicle, pedestrian, and cyclist detections using the deployed model.
+
+
+# Notes:
+
+WIP : Working to get done Object detection using ResNet, VGG and DenseNet. Also, working to create a Docker file to be able to upload image and counts number of objects. 
+1) Under folder 03_PYTROCH working with file PYTORCH_ImageObjectDetection_v3.py and website in folder "server"
+2) Docker instructions:
+   Build docker image -> docker build -t object_detector_app .
+   Run docker image in internal server -> docker run -p 5001:5000 object_detector_app 
+
+3) Issues : The scripts don't put boxes around images anymore.
+
 
 
 

@@ -1,0 +1,9 @@
+person: 43
+car: 8
+bus: 1
+truck: 1
+traffic light: 2
+parking meter: 1
+tie: 1
+
+Time taken: 12.24 seconds

@@ -1,0 +1,11 @@
+parking meter: 1
+tram: 7
+semi-trailer truck: 5
+triumphal arch: 1
+trolleybus: 24
+unicycle: 5
+wing: 1
+traffic sign: 9
+traffic light: 47
+
+Time taken: 69.10 seconds
