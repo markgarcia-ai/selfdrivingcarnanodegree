@@ -30,8 +30,8 @@ OpenCV is the go-to library for traditional computer vision and image processing
 # MODELS PERFORMANCE
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/video.gif" alt="Image 1" width="400" /> Original Video</td>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/Fasterrcnn.gif" alt="Image 1" width="400" /> Faster R-CNN</td>    
+    <td align="center"><img src="https://github.com/markgarcia-ai/selfdrivingcarnanodegree/blob/main/01_ObjectDetection/results/video.gif" alt="Image 1" width="400" /> Original Video</td>
+    <td align="center"><img src="https://github.com/markgarcia-ai/selfdrivingcarnanodegree/blob/main/01_ObjectDetection/results/Fasterrcnn.gif" alt="Image 1" width="400" /> Faster R-CNN</td>    
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" /> ResNet (Residual Networks)</td>
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> VGG (Visual Geometry Group) </td>
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" />DenseNet (Densely Connected Convolutional Networks)</td>    
