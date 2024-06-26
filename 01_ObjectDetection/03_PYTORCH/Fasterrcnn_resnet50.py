@@ -6,6 +6,7 @@ from torchvision import transforms
 from PIL import Image, ImageDraw, ImageFont
 import imageio
 import time
+from natsort import natsorted  # Import natsorted
 
 class ObjectDetector:
     def __init__(self, model_name='fasterrcnn_resnet50_fpn', threshold=0.5):
@@ -45,8 +46,11 @@ class ObjectDetector:
     def detect_objects(self, images_folder):
         image_files = [os.path.join(images_folder, file) for file in os.listdir(images_folder) if file.endswith(('png', 'jpg', 'jpeg'))]
 
+        # Use natsorted to sort images naturally
+        image_files = natsorted(image_files)
+
         images = []
-        for file_name in sorted(image_files):
+        for file_name in image_files:
             img = Image.open(file_name)
             img_tensor = self.transform(img).unsqueeze(0)
 
@@ -85,7 +89,7 @@ class ObjectDetector:
         label_text = f"{label_name} {score:.2f}"
 
         font = ImageFont.load_default()
-        text_size = draw.textsize(label_text, font=font)
+        text_size = draw.textbbox((0, 0), label_text, font=font)[2:]  # Updated text size calculation
         text_location = (box[0], box[1] - text_size[1])
         draw.rectangle([text_location, (text_location[0] + text_size[0], text_location[1] + text_size[1])], fill="red")
         draw.text(text_location, label_text, fill="white", font=font)
@@ -97,7 +101,7 @@ class ObjectDetector:
         draw = ImageDraw.Draw(img_draw)
         font = ImageFont.load_default()
         counter_text = f"Objects detected: {object_count}"
-        text_size = draw.textsize(counter_text, font=font)
+        text_size = draw.textbbox((0, 0), counter_text, font=font)[2:]  # Updated text size calculation
         text_location = (10, 10)
         draw.rectangle([text_location, (text_location[0] + text_size[0], text_location[1] + text_size[1])], fill="blue")
         draw.text(text_location, counter_text, fill="white", font=font)
@@ -116,8 +120,8 @@ if __name__ == "__main__":
     start_time = time.time()
 
     images_folder_path = 'test_video'  # Replace this with your image folder path
-    output_gif_path = 'PYTORCH_output2.gif'
-    output_txt_path = 'object_counts.txt'
+    output_gif_path = 'Fasterrcnn.gif'
+    output_txt_path = 'Fasterrcnn_object_counts.txt'
 
     detector = ObjectDetector()
     detected_images = detector.detect_objects(images_folder_path)

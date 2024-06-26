@@ -1,0 +1,16 @@
+person: 1196
+bicycle: 13
+car: 1260
+motorcycle: 7
+bus: 2
+truck: 4
+traffic light: 244
+fire hydrant: 2
+parking meter: 1
+handbag: 13
+tie: 16
+skis: 55
+sports ball: 1
+wine glass: 8
+
+Time taken: 390.31 seconds

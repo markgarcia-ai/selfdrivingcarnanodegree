@@ -15,34 +15,23 @@ You need to create a virtual environment in CONDA and use next libraries. <br>
 
 ## Using PYTORCH
 PyTorch is a deep learning framework. It's an open-source machine learning library primarily designed for building and training deep neural networks. PyTorch provides a flexible and intuitive interface that facilitates the creation and experimentation of complex deep learning models.
-<br> Below results using PYTORCH models <br>
 
-
-
-## MODELS
-
-# * SSD MobileNet V2 FPNLite 640x640	
-Single Shot MultiBox Detector (SSD) is a single-stage object detection model.
-
-# * SSD ResNet50 V1 FPN 640x640 (RetinaNet50)	
-
-# * Faster R-CNN ResNet50 V1 640x640	
-
-# * EfficientDet D1 640x640	
-
-# * Faster R-CNN ResNet152 V1 640x640	
+## Diferences with OpenCV
+OpenCV is the go-to library for traditional computer vision and image processing tasks such as Image and Video Processing, Object Detection and Recognition, Feature Extraction and Matching, Augmented Reality and Robotics. Depending on your project requirements, you might choose one over the other or even use them together, leveraging OpenCV for pre-processing and PyTorch for nodel training and inference.
 
 ## MODELS TO DEPLOY
 
-**Model 1:** ResNet (Residual Networks) -> It detects upto 80 objects.
-**Model 2:** VGG (Visual Geometry Group) -> It's more for image clasification than object detection with 1000 different categories.
-**Model 3:** DenseNet (Densely Connected Convolutional Networks): -> It's designed for image classification tasks with 1000 categories
+**Faster R-CNN (Region-based Convolutional Neural Network)** -> It's designed to identify and localize objects within an image <br>
+**ResNet (Residual Networks)** -> It detects upto 80 objects. <br>
+**VGG (Visual Geometry Group)** -> It's more for image clasification than object detection with 1000 different categories. <br>
+**DenseNet (Densely Connected Convolutional Networks):** -> It's designed for image classification tasks with 1000 categories <br>
 
 
 # MODELS PERFORMANCE
 <table>
   <tr>
-    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> Original Video</td>
+    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/video.gif" alt="Image 1" width="400" /> Original Video</td>
+    <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/Fasterrcnn.gif" alt="Image 1" width="400" /> Faster R-CNN</td>    
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" /> ResNet (Residual Networks)</td>
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/output.gif" alt="Image 1" width="400" /> VGG (Visual Geometry Group) </td>
     <td align="center"><img src="https://github.com/marcjesus/udacity/blob/main/01_ObjectDetection/OPENCV_output_gif.gif" alt="Image 2" width="400" />DenseNet (Densely Connected Convolutional Networks)</td>    
