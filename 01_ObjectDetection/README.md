@@ -9,9 +9,9 @@ You need to create a virtual environment in CONDA and use next libraries. <br>
 
 # Project folders
 
-**1 01_Udacity_Project_tensorflow**: Files from udacity
-**2 02_OPENCV**: Examples of moldes using open CV
-**3 03_PYTORCH**: Examples using Pytorch  
+**01_Udacity_Project_tensorflow**: Files from udacity <br>
+**02_OPENCV**: Examples of moldes using open CV <br>
+**03_PYTORCH**: Examples using Pytorch <br>
 
 ## Using PYTORCH
 PyTorch is a deep learning framework. It's an open-source machine learning library primarily designed for building and training deep neural networks. PyTorch provides a flexible and intuitive interface that facilitates the creation and experimentation of complex deep learning models.
