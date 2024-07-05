@@ -6,14 +6,30 @@
     <title>Object Detection</title>
 </head>
 <body>
-    <h1>Object Detection</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".png, .jpg, .jpeg">
+    <h1>Upload an Image for Object Detection</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file">
         <input type="submit" value="Upload">
     </form>
-    {% if image %}
-    <h2>Detected Image</h2>
-    <img src="{{ url_for('show_image', filename=image) }}" alt="Detected Image">
+    {% if uploaded_img_url %}
+    <h2>Uploaded Image</h2>
+    <img src="{{ uploaded_img_url }}" style="max-width: 500px;">
+    {% endif %}
+    {% if result_img_url %}
+    <h2>Image with Detected Objects</h2>
+    <img src="{{ result_img_url }}" style="max-width: 500px;">
+    <p>Number of objects detected: {{ num_objects }}</p>
+    <ul>
+        {% for object, count in object_counts.items() %}
+        <li>{{ object }}: {{ count }}</li>
+        {% endfor %}
+    </ul>
+    <form method="POST" action="/calculate_map">
+        <input type="hidden" name="detected_objects" value="{{ num_objects }}">
+        <label for="true_objects">Enter the true number of objects:</label>
+        <input type="number" name="true_objects" id="true_objects" min="0" required>
+        <input type="submit" value="Calculate mAP">
+    </form>
     {% endif %}
 </body>
 </html>

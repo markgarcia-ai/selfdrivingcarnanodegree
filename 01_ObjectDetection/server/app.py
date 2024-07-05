@@ -1,45 +1,49 @@
-from flask import Flask, render_template, request, redirect, url_for, send_file
+from flask import Flask, request, render_template, redirect, url_for
 from werkzeug.utils import secure_filename
-from detector import ObjectDetector
 import os
-import io
+from model.object_detection import ObjectDetector
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
+app.config['UPLOAD_FOLDER'] = 'static/uploads/'
 
+# Instantiate the object detector
 detector = ObjectDetector()
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        # Handle file upload
+        if 'file' not in request.files:
+            return redirect(request.url)
+        
+        file = request.files['file']
+        if file.filename == '':
+            return redirect(request.url)
+        
+        if file:
+            filename = secure_filename(file.filename)
+            filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+            file.save(filepath)
+            
+            # Detect objects in the image
+            result_img, num_objects, object_counts = detector.detect_objects(filepath)
+            result_img_path = os.path.join(app.config['UPLOAD_FOLDER'], 'result_' + filename)
+            result_img.save(result_img_path)
+            
+            return render_template('index.html', uploaded_img_url=filepath, result_img_url=result_img_path, num_objects=num_objects, object_counts=object_counts)
+
     return render_template('index.html')
 
-@app.route('/upload', methods=['POST'])
-def upload_file():
-    if 'file' not in request.files:
-        return redirect(request.url)
+@app.route('/calculate_map', methods=['POST'])
+def calculate_map():
+    if request.method == 'POST':
+        true_objects = int(request.form['true_objects'])
+        detected_objects = int(request.form['detected_objects'])
+        
+        # Calculate mAP (for simplicity, assume true_objects == detected_objects as an example)
+        map_score = detector.calculate_map(true_objects, detected_objects)
+        
+        return f"mAP Score: {map_score:.2f}"
 
-    file = request.files['file']
-    if file.filename == '':
-        return redirect(request.url)
-
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-        file.save(file_path)
-
-        annotated_image = detector.detect_objects(file_path)
-        annotated_image_path = os.path.join(app.config['UPLOAD_FOLDER'], 'annotated_' + filename)
-        annotated_image.save(annotated_image_path)
-
-        return redirect(url_for('show_image', filename='annotated_' + filename))
-
-@app.route('/show/<filename>')
-def show_image(filename):
-    return send_file(os.path.join(app.config['UPLOAD_FOLDER'], filename), mimetype='image/jpeg')
-
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
-
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True, port=8000)
