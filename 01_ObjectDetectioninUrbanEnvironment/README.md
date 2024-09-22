@@ -1,3 +1,30 @@
+# PROJECT RUBRIC: Model Training and Evaluation
+
+## Criteria and Submission Requirements
+
+### 1. Test at Least Two Pretrained Models (Other than EfficientNet)
+- **Requirement**: Test at least two models other than EfficientNet.
+- **Submission**: Update and submit the `pipeline.config` file and notebooks associated with all the pretrained models.
+
+### 2. Choosing the Best Model for Deployment
+- **Requirement**: Write a brief summary of your experiments and suggest the best model for this problem. Include the accuracy (mAP) values of the models you tried.
+- **Discussion Points**:
+  - How does the validation loss compare to the training loss?
+  - Did you expect such behavior from the losses/metrics?
+  - What can you do to improve the performance of the tested models further?
+
+# Model Deployment
+
+## Criteria and Submission Requirements
+
+### 1. Deploy the Best Model and Run Inference
+- **Requirement**: Deploy the best model in AWS by completing and running `2_deploy_model.ipynb`.
+- **Submission**: Should be able to generate an output video with vehicle, pedestrian, and cyclist detections using the deployed model.
+
+
+
+
+
 # HOW TO RUN THESE SCRIPTS
 You need to create a virtual environment in CONDA and use next libraries. <br>
 1-  conda create --name myenv python=3.11 #Create virtual env <br>
